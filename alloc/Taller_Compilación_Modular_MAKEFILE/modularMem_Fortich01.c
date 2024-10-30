@@ -1,35 +1,40 @@
-/******************************************************************
-Pontificia Universidad Javeriana
-Autor: Jorge Fortich
-Fecha: 27/08/2024
-Materia: Sistemas operativos
-Tema: Compilación modular
-
-Def: Este código presenta una implementación básica de un vector 
-dinámico en C, junto con la compilación modular usando bibliotecas. 
-El propósito principal es proporcionar una estructura de datos 
-flexible y eficiente para gestionar una colección de elementos de 
-tamaño variable.
-
-La implementación del vector dinámico permite al usuario:
-1. Inicializar un vector con una capacidad inicial.
-2. Redimensionar el vector dinámicamente cuando sea necesario.
-3. Añadir, obtener, modificar y eliminar elementos en el vector.
-4. Liberar los recursos de memoria asociados al vector.
-
-El código demuestra conceptos clave como la gestión dinámica de 
-memoria, el redimensionamiento de arreglos, y el uso de punteros 
-genéricos. Estas técnicas son esenciales para la creación de 
-estructuras de datos que requieren ajustes dinámicos en su tamaño 
-y para una gestión eficiente de los recursos de memoria en 
-aplicaciones en C.
-
-El `Makefile` incluido facilita la compilación modular del proyecto, 
-permitiendo compilar los archivos fuente en objetos y enlazarlos en 
-un ejecutable final. También incluye un objetivo para limpiar los 
-archivos generados durante el proceso de compilación.
-*******************************************************************/
-
+/************************
+ * Fecha: 27 de agosto de 2024
+ * Autor: Jorge Andrés Fortich Ordosgoitia
+ * Materia: Sistemas Operativos
+ * Tema: Gestión de Memoria, Punteros, Compilación Modular
+ *
+ * Descripción:
+ *
+ * Gestión de Memoria (Dinámica y Estática):
+ * 
+ * La gestión de memoria implica la manipulación del espacio de memoria 
+ * según las necesidades de la aplicación. Se distinguen dos tipos principales:
+ *
+ * 1. *Memoria Estática*: 
+ *    - La memoria se asigna en tiempo de compilación.
+ *    - Incluye variables globales, vectores con tamaño fijo, entre otros.
+ *    - No es necesario liberar esta memoria manualmente, y siempre tiene un tamaño fijo.
+ *
+ * 2. *Memoria Dinámica*:
+ *    - Permite al usuario cambiar o modificar el espacio de memoria según los requisitos del problema.
+ *    - Es importante liberar esta memoria al finalizar su uso para evitar fugas de memoria.
+ *
+ * Punteros:
+ *
+ * Los punteros son variables auxiliares que permiten al usuario señalar de manera ligera 
+ * el espacio de memoria o los contenedores (como estructuras de datos). Proporcionan la 
+ * capacidad de obtener de forma precisa la dirección de memoria. Son especialmente útiles 
+ * cuando se desea que el programa administre eficientemente el uso de la memoria.
+ *
+ * Compilación Modular:
+ *
+ * La compilación modular consiste en crear bibliotecas de funciones con sus respectivas interfaces,
+ * de forma que estas bibliotecas estén disponibles para otros programas o usuarios. Además, 
+ * se utiliza un archivo llamado "Makefile" cuyo propósito es automatizar el proceso de compilación.
+ *
+ * Tópico: Reserva de memoria y Compilación Modular
+ ************************/
 
 #include <stdio.h>
 #include <stdlib.h>
