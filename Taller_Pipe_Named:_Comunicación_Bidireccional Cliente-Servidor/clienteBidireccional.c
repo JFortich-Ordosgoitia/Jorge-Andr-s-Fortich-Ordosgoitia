@@ -1,6 +1,6 @@
 /***********************************************************
 Fecha: 01/10/2024
-Autor: David Rodriguez
+Autor: Jorge Fortich
 Materia: Sisteas operativos
 Tema: Pipe named o FIFO o tuberia
 Topico: Comunicacion bidireccional
