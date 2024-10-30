@@ -1,6 +1,6 @@
 /******************************************************************
 Pontificia Universidad Javeriana
-Autor: David Rodríguez
+Autor: Jorge Fortich
 Fecha: 27/08/2024
 Materia: Sistemas operativos
 Tema: Compilación modular
