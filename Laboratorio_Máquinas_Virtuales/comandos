@@ -1,0 +1,8 @@
+ls
+cd
+mkdir //crear carpeta
+rm+nombre del archivo //eliminar
+unzip+nombre del archivo //descomprimir un .zip
+nano+nombre del archivo //crear o editar un archivo
+scp+"direccion del.zip"+estudiante@10.43.103.140:direccion a donde quiero agregar
+rm -r nombre_de_la_carpeta //eliminar carpeta
