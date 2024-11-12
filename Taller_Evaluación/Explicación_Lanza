@@ -1,0 +1,31 @@
+Pasos para compilar y ejecutar el script en Perl
+
+1. Verifica que Perl esté instalado  
+   Antes de ejecutar el script, asegúrate de que Perl esté instalado en tu sistema. Para verificarlo, abre una terminal y ejecuta el siguiente comando:  
+
+  bash
+   perl -v
+    
+
+   Si está instalado, se mostrará la versión de Perl. Si no está instalado, puedes instalarlo utilizando el gestor de paquetes de tu sistema operativo.
+
+
+
+2. Guarda el código en un archivo  
+   Copia el contenido del script y guárdalo en un archivo con la extensión `.pl`. Por ejemplo, llámalo `script.pl`.  
+
+
+
+3. Coloca los ejecutables en el directorio adecuado  
+   Asegúrate de que los programas `MM_transpuesto` y `MM_clasico` estén compilados y ubicados en el mismo directorio que el archivo `script.pl`, o ajusta las rutas en el script para que apunten correctamente a estos ejecutables.  
+
+
+
+4. Ejecuta el script en Perl**  
+   Para ejecutar el script, usa el siguiente comando en la terminal:  
+
+   bash
+   perl script.pl
+     
+
+   Este comando ejecutará el script y generará los archivos de salida con los resultados de las pruebas de rendimiento en el mismo directorio en que se encuentra el script.
