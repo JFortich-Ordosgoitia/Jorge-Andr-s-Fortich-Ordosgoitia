@@ -1,0 +1,83 @@
+Este código realiza la multiplicación de matrices \(N \times N\) utilizando el enfoque de transponer una de las matrices para optimizar el acceso a la memoria y mejorar la eficiencia en sistemas donde la localidad de referencia es importante. Se implementa mediante **hilos POSIX (Pthreads)** y permite evaluar el rendimiento utilizando un enfoque concurrente.
+
+Aquí tienes una breve explicación de los componentes clave del código:
+
+
+Explicación del Código
+
+1. Estructura de Datos Compartida:
+   - `MEM_CHUNK`: Bloque de memoria estática donde se almacenan las matrices \(mA\), \(mB\) y \(mC\).
+   - Las matrices están alineadas en memoria de forma consecutiva para aprovechar la localidad espacial.
+
+2. Estructura de Parámetros (`parametros`):
+   - Contiene la información que cada hilo necesita:
+     - `idH`: Identificador único del hilo.
+     - `nH`: Número total de hilos.
+     - `N`: Dimensión de las matrices.
+
+3. Inicialización y Relleno de Matrices:
+   - `llenar_matriz`: Llena las matrices \(mA\) y \(mB\) con valores secuenciales y limpia la matriz \(mC\).
+
+4. Multiplicación de Matrices con Transpuesta:
+   - En el método `mult_thread`, se optimiza el acceso a la memoria al tratar a las columnas de \(mB\) como filas. Esto se logra al **transponer implícitamente** la matriz \(mB\) durante la multiplicación.
+   - Cada hilo procesa un subconjunto de las filas de \(mA\), lo que reduce conflictos de acceso a memoria entre hilos.
+
+5. Uso de Hilos:
+   - Los hilos son creados mediante `pthread_create`, y cada uno ejecuta la función **`mult_thread`** para procesar las filas asignadas.
+   - Se sincronizan usando `pthread_join`.
+
+6. Medición del Tiempo de Ejecución:
+   - Se utiliza gettimeofday para medir el tiempo transcurrido entre el inicio y la finalización del cálculo.
+
+
+
+Optimización Implementada:
+- Transposición implícita:
+  - En lugar de calcular directamente el producto de una fila de \(mA\) con una columna de \(mB\), se utiliza la transposición para recorrer de manera contigua las celdas de \(mB\). Esto reduce los *cache misses* y mejora la eficiencia en hardware con jerarquías de caché.
+  
+- Distribución de Tareas:
+  - Las filas de \(mA\) se dividen equitativamente entre los hilos, balanceando la carga de trabajo.
+
+
+
+Ventajas del Enfoque:
+- Paralelismo: Utiliza múltiples hilos para acelerar la computación.
+- Eficiencia de memoria: La transposición mejora el uso de la memoria caché.
+- Flexibilidad: Permite ajustar el tamaño de la matriz y el número de hilos desde la línea de comandos.
+
+
+
+Posibles Mejoras:
+1. Verificación del Tamaño de la Matriz:
+   - Validar que el tamaño de la matriz sea divisible entre el número de hilos para evitar filas no asignadas.
+   
+2. Liberación de Memoria Dinámica:
+   - Liberar correctamente la memoria asignada dinámicamente para los parámetros de los hilos.
+
+3. Uso del Mutex:
+   - En este caso, el mutex no es necesario ya que no hay acceso concurrente a recursos compartidos entre hilos durante los cálculos.
+
+4. Transposición Explicita:
+   - Si el tamaño de la matriz \(N\) es muy grande, almacenar explícitamente la matriz transpuesta en memoria podría acelerar aún más el cálculo.
+
+
+
+Ejemplo de Ejecución:
+
+$ ./ejecutable 4 2
+
+- Esto ejecutará la multiplicación para matrices de tamaño \(4 \times 4\) usando 2 hilos. Las matrices \(mA\), \(mB\) y \(mC\) se imprimirán si el tamaño de la matriz es menor a 12.
+
+Salida Esperada (matriz pequeña):
+
+mA:
+ 0.000  1.100  2.200  3.300
+ 4.400  5.500  6.600  7.700
+ 
+ 
+mB:
+ 0.000  2.200  4.400  6.600
+ 
+ 
+Resultado:
+ 12535 µs
