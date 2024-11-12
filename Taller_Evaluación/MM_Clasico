@@ -1,0 +1,84 @@
+Compilación y ejecución del código en C
+
+1. Instala un compilador de C  
+   Asegúrate de tener instalado un compilador de C, como `gcc`. Puedes verificarlo ejecutando en la terminal:  
+
+   
+   gcc --version
+     
+
+   Si no está instalado, puedes instalarlo usando el gestor de paquetes de tu sistema operativo. Por ejemplo:  
+
+   - Ubuntu/Debian:  
+     
+     sudo apt update && sudo apt install build-essential
+     
+   - CentOS/Fedora:  
+     
+     sudo yum groupinstall "Development Tools"
+     
+   - MacOS:  
+     Instala Xcode Command Line Tools:  
+     
+xcode-select --install
+     
+
+
+
+2. Guarda el código en un archivo  
+   Copia el contenido del código y guárdalo en un archivo llamado `matrix_mult.c`.
+
+
+
+3. Compila el código  
+   Usa `gcc` para compilar el código, incluyendo la biblioteca POSIX Pthreads con la opción `-lpthread`. Ejecuta el siguiente comando en la terminal:  
+
+   
+   gcc -o matrix_mult matrix_mult.c -lpthread
+   
+
+   - `-o matrix_mult`: Especifica el nombre del archivo ejecutable de salida.
+   - `-lpthread`: Vincula la biblioteca de hilos POSIX necesaria para este programa.
+
+
+
+4. Ejecuta el programa  
+   Una vez compilado, ejecuta el programa proporcionando dos argumentos: el tamaño de la matriz (por ejemplo, 1000) y el número de hilos (por ejemplo, 4). Usa el siguiente comando:  
+
+   
+   ./matrix_mult 1000 4
+   
+
+   Aquí:
+   - `1000`: Es el tamaño de la matriz (1000x1000).
+   - `4`: Es el número de hilos que se usarán para realizar la multiplicación.
+
+
+
+5. Resultados  
+   - El programa llenará las matrices `mA` y `mB` con valores predefinidos.
+   - Multiplicará las matrices usando el número de hilos especificado.
+   - Mostrará el tiempo de ejecución en microsegundos (`µs`).
+   - Si el tamaño de las matrices es menor a 12x12, imprimirá las matrices en la consola.
+
+
+
+6. Ejemplo de salida  
+   Para el comando:
+   
+   ./matrix_mult 4 2
+   
+   Podrías ver una salida similar a esta:
+   
+   Matriz A:
+   0.000 1.100 2.200 3.300
+   
+   Tiempo de ejecución: 12345 µs
+   
+
+
+
+7. Notas importantes  
+   - Ajusta los argumentos de entrada (`tamMatriz` y `numHilos`) según los recursos de tu sistema.
+   - Para matrices grandes, asegúrate de tener suficiente memoria RAM.
+   - Usa herramientas como `htop` o `top` para monitorear el uso de recursos durante la ejecución.
