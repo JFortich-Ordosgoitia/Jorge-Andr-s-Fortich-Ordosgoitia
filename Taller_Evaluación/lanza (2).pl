@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #**************************************************************
 #         		Pontificia Universidad Javeriana
-#     Autor: Juan Alba
+#     Autor: Jorge Fortich Ordosgoitia
 #     Fecha: 10/11/24
 #     Materia: Sistemas Operativos
 #     Tema: Taller de Evaluación de Rendimiento
